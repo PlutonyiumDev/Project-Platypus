@@ -1,5 +1,8 @@
+import model.*;
+
 public class Root
 {
+	private Game game;
 	private int gameticker;
 	private GameWindow gameWindow;
 
@@ -10,11 +13,12 @@ public class Root
 
 	Root()
 	{
-		gameWindow = new GameWindow();
-		game();
+		game = new Game();
+		gameWindow = new GameWindow(game);
+		start();
 	}
 
-	public void game()
+	public void start()
 	{
 		gameticker = 0;
 		while(winCheck())

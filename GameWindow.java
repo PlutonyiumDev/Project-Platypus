@@ -1,3 +1,5 @@
+import model.*;
+
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
@@ -5,8 +7,11 @@ import java.util.*;
 
 public class GameWindow extends JFrame
 {
-	GameWindow()
+	Game game;
+	GamePanel mainPanel;
+	GameWindow(Game g)
 	{
+		game = g;
 		setup();
 		build();
 	}
@@ -22,7 +27,8 @@ public class GameWindow extends JFrame
 
 	private void build()
 	{
-		add(new GamePanel());
+		mainPanel = new GamePanel();
+		add(mainPanel);
 	}
 
 	private class GamePanel extends JPanel
@@ -44,10 +50,15 @@ public class GameWindow extends JFrame
 		{
 			add(timer);
 		}
+
+		public void update()
+		{
+			timer.setText("" + game.getTime());
+		}
 	}
 
 	public void update()
 	{
-		timer.setText();
+		mainPanel.update();
 	}
 }

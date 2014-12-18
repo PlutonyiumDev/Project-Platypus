@@ -1,19 +1,20 @@
+package model;
 
 public class Game
 {
 	private int gameTimer;
 
-	Game()
+	public Game()
 	{
 		gameTimer = 0;
 	}
 
-	private void tick()
+	public void tick()
 	{
 		gameTimer++;
 	}
 
-	private int getTick()
+	public int getTime()
 	{
 		return gameTimer;
 	}
