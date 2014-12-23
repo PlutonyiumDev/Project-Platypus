@@ -15,7 +15,7 @@ public class Root
 	{
 		game = new Game();
 		gameWindow = new GameWindow(game);
-		start();
+		//start();
 	}
 
 	public void start()
@@ -24,7 +24,7 @@ public class Root
 		while(winCheck())
 		{
 			gameticker++;
-			gameWindow.update();
+			//gameWindow.update();
 		}
 	}
 
