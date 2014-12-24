@@ -4,6 +4,7 @@ import java.util.*;
 
 public class Game
 {
+	private Hero o;
 	private int gameTimer;
 	private LinkedList<Hero> heros = new LinkedList<Hero>();
 

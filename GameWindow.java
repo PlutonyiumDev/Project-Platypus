@@ -50,22 +50,12 @@ public class GameWindow extends JFrame
 		{
 			setVisible(true);
 		}
-/*
 
-		private void setup()
-		{
-			setVisible(true);
-		}
-
-		private void build()
-		{
-			add(timer);
-		}
-*/
 		public void update()
 		{
 			timer.setText("" + game.getTime());
 		}
+		
 		@Override
 		public void paintComponent(Graphics g)
 		{
@@ -82,22 +72,6 @@ public class GameWindow extends JFrame
 			return new Dimension(BOX_WIDTH * GRID_WIDTH + 1, BOX_HEIGHT * GRID_HEIGHT + 1);
 		}
 
-			/*
-			super.paintComponent(g);
-			dbImage = createImage(100,100);
-			//dog=dbImage.getGraphics();
-			g.draw(g);
-			g.drawImage(dbImage, 0, 0, this);
-		}
-
-		public void draw(Graphics g)
-		{
-			g.create();
-			drawGrid(g);
-
-		}
-		*/
-
 		public void drawGrid(Graphics g)
    		{
 	        g.drawRect(0, 0, GRID_WIDTH * BOX_WIDTH, GRID_HEIGHT * BOX_HEIGHT);
@@ -111,12 +85,6 @@ public class GameWindow extends JFrame
 
     	
 	}
-/*
-	public void update()
-	{
-		mainPanel.update();
-	}	
-	*/
 	
 }
 }
