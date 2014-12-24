@@ -2,6 +2,7 @@ package model;
 
 public class Game
 {
+	private Hero o;
 	private int gameTimer;
 
 	public Game()
