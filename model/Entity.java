@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.*;
 
-public class Entity
+public class Entity extends Point
 {
 	private int health;
 	private int defence;
@@ -12,8 +12,6 @@ public class Entity
 	private int atkSpd;
 	private int dodge;
 	private int crit;
-	
-	private Point coordinates;
 
 	public Entity()
 	{
@@ -21,13 +19,13 @@ public class Entity
 	}
 	public Entity(int health, int defence, int atkDmg, int atkSpd, int dodge, int crit)
 	{
+		super();
 		this.health = health;
 		this.defence = defence;
 		this.atkDmg = atkDmg;
 		this.atkSpd = atkSpd;
 		this.dodge = dodge;
-		this.crit = crit;
-		coordinates = new Point();
+		this.crit = crit;		
 	}
 
 	public Entity(Entity e)
@@ -37,17 +35,15 @@ public class Entity
 
 	public void setCoordinates(int x, int y)
 	{
-		coordinates.setLocation(x, y);
+		setLocation(x, y);
 	}
 
 	public void paintComponent(Graphics g)
 	{
-			int dx = (int)coordinates.getX();
-			int dy = (int)coordinates.getY();
 			g.setColor(Color.RED);
-        	g.fillRect(dx, dy, 30, 30);
+        	g.fillRect(x, y, 30, 30);
        		g.setColor(Color.BLACK);
-       		g.drawRect(dx, dy, 30, 30);
+       		g.drawRect(x, y, 30, 30);
 	}
 	public void attack(Entity e)
 	{
