@@ -9,7 +9,6 @@ public class Entity
 	private int atkSpd;
 	private float dodge;
 	private float crit;
-	
 	private Point coordinates;
 
 	public Entity()
