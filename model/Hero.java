@@ -1,3 +1,5 @@
+package model;
+
 import java.util.*;
 
 public class Hero extends Entity
@@ -17,7 +19,7 @@ public class Hero extends Entity
 		this.staminaRegen = staminaRegen;
 	}
 
-	public Hero(int health, int defence, int atkDmg, int atkSpd, float dodge, float crit, String name, int healthRegen, int stamina, int staminaRegen)
+	public Hero(int health, int defence, int atkDmg, int atkSpd, int dodge, int crit, String name, int healthRegen, int stamina, int staminaRegen)
 	{
 		this(new Entity(health, defence, atkDmg, atkSpd, dodge, crit), name, healthRegen, stamina, staminaRegen);
 	}

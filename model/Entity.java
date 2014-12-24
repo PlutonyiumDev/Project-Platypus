@@ -1,5 +1,10 @@
+package model;
+
+ 
+
 import javax.swing.*;
 import java.awt.*;
+import java.util.*;
 
 public class Entity
 {
@@ -7,8 +12,8 @@ public class Entity
 	private int defence;
 	private int atkDmg;
 	private int atkSpd;
-	private float dodge;
-	private float crit;
+	private int dodge;
+	private int crit;
 	
 	private Point coordinates;
 
@@ -16,7 +21,7 @@ public class Entity
 	{
 
 	}
-	public Entity(int health, int defence, int atkDmg, int atkSpd, float dodge, float crit)
+	public Entity(int health, int defence, int atkDmg, int atkSpd, int dodge, int crit)
 	{
 		this.health = health;
 		this.defence = defence;
@@ -38,16 +43,23 @@ public class Entity
 	}
 
 	public void paintComponent(Graphics g)
-		{
+	{
 			int dx = (int)coordinates.getX();
 			int dy = (int)coordinates.getY();
 			g.setColor(Color.RED);
         	g.fillRect(dx, dy, 30, 30);
        		g.setColor(Color.BLACK);
        		g.drawRect(dx, dy, 30, 30);
-		}
+	}
 	public void attack(Entity e)
 	{
-		e.health -= atkDmg - e.defence * 0.125;
+		Random r = new Random();
+		if (e.dodge < r.nextInt(100))
+		{
+			int setAtk = atkDmg;
+			if (crit > r.nextInt(100))
+				setAtk *= 2;
+			e.health -= setAtk - e.defence * 0.125;
+		}
 	}
 }
