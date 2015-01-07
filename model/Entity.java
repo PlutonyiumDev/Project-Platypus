@@ -57,4 +57,10 @@ public class Entity extends Point
 			e.health -= setAtk - e.defence * 0.125;
 		}
 	}
+
+	public void step()
+	{
+		setLocation(x-1, y);
+		System.out.println("My Location is ("+x+","+y+")");
+	}
 }

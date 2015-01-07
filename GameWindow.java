@@ -68,7 +68,7 @@ public class GameWindow extends JFrame
 			{
 				e.paintComponent(g);
 			}
-			g.drawString(""+game.getTime(),20,20);
+			g.drawString(""+game.getTime(),10,20);
 		}
 
 		@Override

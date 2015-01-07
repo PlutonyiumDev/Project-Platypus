@@ -32,6 +32,10 @@ public class Game
 	{
 		gameTimer++;
 		System.out.println("Time is "+ gameTimer +"ms");
+		for(Entity e: enemies)
+		{
+			e.step();
+		}
 	}
 
 	public LinkedList<Hero> getHeroes()
