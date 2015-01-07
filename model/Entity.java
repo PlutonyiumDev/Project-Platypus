@@ -38,12 +38,18 @@ public class Entity extends Point
 		setLocation(x, y);
 	}
 
+	public void shoutCoordinate()
+	{
+		System.out.println("MY X is " + getX() + "My Y is " + getY() );
+	}
+
 	public void paintComponent(Graphics g)
 	{
 			g.setColor(Color.RED);
-        	g.fillRect(x, y, 30, 30);
+			g.drawOval(x * 30, y * 30, 30, 30);
+        	g.fillOval(x * 30, y * 30, 30, 30);
        		g.setColor(Color.BLACK);
-       		g.drawRect(x, y, 30, 30);
+       		
 	}
 	public void attack(Entity e)
 	{

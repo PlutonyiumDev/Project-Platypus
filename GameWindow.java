@@ -60,10 +60,14 @@ public class GameWindow extends JFrame
 		public void paintComponent(Graphics g)
 		{
 			super.paintComponent(g);
-			g.drawString("BLAH",20,20);
 			g.setColor(Color.BLUE);
-			g.drawOval(0,0,100,100);
 			drawGrid(g);
+			LinkedList<Hero> heroes = game.getHeroes();
+			for(Hero h: heroes)
+			{
+				h.paintComponent(g);
+				h.shoutCoordinate();
+			}
 		}
 
 		@Override

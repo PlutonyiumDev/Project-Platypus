@@ -16,13 +16,18 @@ public class Game
 		heros.add(new Hero(10, 5, 4, 3, 0, 0, "Chris", 3, 20, 3));
 		for (int i = 0; i < heros.size(); i++)
 		{
-			heros.get(i).setCoordinates(i + 1, 3);
+			heros.get(i).setCoordinates(i, 3);
 		}
 	}
 
 	public void tick()
 	{
 		gameTimer++;
+	}
+
+	public LinkedList<Hero> getHeroes()
+	{
+	return heros;
 	}
 
 	public int getTime()
