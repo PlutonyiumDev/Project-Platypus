@@ -36,6 +36,34 @@ public class Entity extends Point
 		this(e.health, e.defence, e.atkDmg, e.atkSpd, e.dodge, e.crit);
 	}
 
+	public int getHealth()
+	{
+		return health;
+	}
+
+	public int getDefence()
+	{
+		return defence;
+	}
+	public int getAtkDmg()
+	{
+		return atkDmg;
+	}
+	public int getAtkSpd()
+	{
+		return atkSpd;
+	}
+
+	public int getDodge()
+	{
+		return dodge;
+	}
+
+	public int getCrit()
+	{
+		return crit;
+	}
+
 	public void setCoordinates(int x, int y)
 	{
 		setLocation(x, y);
@@ -66,4 +94,6 @@ public class Entity extends Point
 		setLocation(x-1, y);
 		System.out.println("My Location is ("+x+","+y+")");
 	}
+
+
 }
