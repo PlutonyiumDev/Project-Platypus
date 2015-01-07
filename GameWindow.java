@@ -60,9 +60,16 @@ public class GameWindow extends JFrame
 			drawGrid(g);
 			LinkedList<Hero> heroes = game.getHeroes();
 			LinkedList<Entity> enemies = game.getEnemies();
-			for(Hero h: heroes)
+			for(int i = 0; i < heroes.size(); i++)
 			{
-				h.paintComponent(g);
+				int battled = 0;
+				heroes.get(i).paintComponent(g);
+				for(Entity e: enemies)
+				{
+					if (heroes.get(i).checkRange(e))
+						battled++;
+				}
+				g.drawString("Hero "+ i + " has seen " + battled + " enemy.",22, 22 + (12*i));
 			}
 			for(Entity e: enemies)
 			{

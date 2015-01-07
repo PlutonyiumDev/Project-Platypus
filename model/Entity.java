@@ -6,6 +6,8 @@ import java.util.*;
 
 public class Entity extends Point
 {
+	//0 = weapon
+	private LinkedList<Item> equipment = new LinkedList<Item>();
 	private int health;
 	private int defence;
 	private int atkDmg;
@@ -13,8 +15,7 @@ public class Entity extends Point
 	private int dodge;
 	private int crit;
 
-	//0 = weapon
-	private LinkedList<Item> equipment = new LinkedList<Item>();
+	private int range;
 
 	public Entity()
 	{
@@ -28,7 +29,8 @@ public class Entity extends Point
 		this.atkDmg = atkDmg;
 		this.atkSpd = atkSpd;
 		this.dodge = dodge;
-		this.crit = crit;		
+		this.crit = crit;
+		range = 1;		
 	}
 
 	public Entity(Entity e)
@@ -95,5 +97,11 @@ public class Entity extends Point
 		System.out.println("My Location is ("+x+","+y+")");
 	}
 
+	public boolean checkRange(Entity e)
+	{
+		int rangeX = (int)this.getX() -  (int)e.getX();
+		int rangeY = (int)this.getY() - (int)e.getY();
 
+		return (Math.abs(rangeX) + Math.abs(rangeY)) <= range;
+	}
 }
