@@ -13,6 +13,9 @@ public class Entity extends Point
 	private int dodge;
 	private int crit;
 
+	//0 = weapon
+	private LinkedList<Item> equipment = new LinkedList<Item>();
+
 	public Entity()
 	{
 
