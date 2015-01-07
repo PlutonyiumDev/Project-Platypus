@@ -38,11 +38,6 @@ public class Entity extends Point
 		setLocation(x, y);
 	}
 
-	public void shoutCoordinate()
-	{
-		System.out.println("MY X is " + getX() + "My Y is " + getY() );
-	}
-
 	public void paintComponent(Graphics g)
 	{
 			g.setColor(Color.RED);

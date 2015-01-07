@@ -51,10 +51,6 @@ public class GameWindow extends JFrame
 			setVisible(true);
 		}
 
-		public void update()
-		{
-			timer.setText("" + game.getTime());
-		}
 		
 		@Override
 		public void paintComponent(Graphics g)
@@ -63,11 +59,16 @@ public class GameWindow extends JFrame
 			g.setColor(Color.BLUE);
 			drawGrid(g);
 			LinkedList<Hero> heroes = game.getHeroes();
+			LinkedList<Entity> enemies = game.getEnemies();
 			for(Hero h: heroes)
 			{
 				h.paintComponent(g);
-				h.shoutCoordinate();
 			}
+			for(Entity e: enemies)
+			{
+				e.paintComponent(g);
+			}
+			g.drawString(""+game.getTime(),20,20);
 		}
 
 		@Override
@@ -89,6 +90,10 @@ public class GameWindow extends JFrame
 
     	
 	}
-	
+
 }
+	public void update()
+	{
+		mainPanel.repaint();
+	}
 }

@@ -3,7 +3,6 @@ import model.*;
 public class Root
 {
 	private Game game;
-	private int gameticker;
 	private GameWindow gameWindow;
 
 	public static void main(String[] args) 
@@ -15,16 +14,21 @@ public class Root
 	{
 		game = new Game();
 		gameWindow = new GameWindow(game);
-		//start();
+		start();
 	}
 
 	public void start()
 	{
-		gameticker = 0;
 		while(winCheck())
 		{
-			gameticker++;
-			//gameWindow.update();
+			try{
+			game.tick();
+			gameWindow.update();
+			Thread.sleep(1000);
+		}
+		catch(InterruptedException e){
+			System.out.println("Interrupted");
+		}
 		}
 	}
 
