@@ -95,7 +95,7 @@ public class Entity extends Point
 		setLocation(x-1, y);
 		System.out.println("My Location is ("+x+","+y+")");
 	}
-/*
+
 	public boolean checkRange(Entity e)
 	{
 		int rangeX = (int)this.getX() -  (int)e.getX();
@@ -103,5 +103,5 @@ public class Entity extends Point
 
 		return (Math.abs(rangeX) + Math.abs(rangeY)) <= range;
 	}
-	*/
+	
 }

@@ -34,27 +34,13 @@ public class StatusWindow extends JFrame
 
 	private class StatusPanel extends JPanel
 	{
-		JTable hero1;
-		JTable hero2;
-		JTable hero3;
+		LinkedList<JTable> heroTables = new LinkedList<JTable>();
 		StatusPanel()
 		{
 			setVisible(true);
 			for(Hero h : heroes)
 			{
-				if(hero1 == null)
-				{
-					hero1 = h.heroTable();
-				}
-				else if(hero2 == null)
-				{
-					hero2 = h.heroTable();
-				}
-				else if(hero3 == null)
-				{
-					hero3 = h.heroTable();
-				}
-				else System.out.println("Error");
+				heroTables.add(h.heroTable());
 			}
 			setup();
 			build();
@@ -68,9 +54,8 @@ public class StatusWindow extends JFrame
 
 		public void build()
 		{
-			add(hero1);
-			add(hero2);
-			add(hero3);
+			for (JTable table : heroTables)
+				add(table);
 		}
 	}
 }
