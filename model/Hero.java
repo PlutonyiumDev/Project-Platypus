@@ -18,6 +18,7 @@ public class Hero extends Entity
 	public Hero(Entity e, String name, int healthRegen, int stamina, int staminaRegen)
 	{
 		super(e);
+		this.name = name;
 		this.healthRegen = healthRegen;
 		this.stamina = stamina;
 		this.staminaRegen = staminaRegen;
@@ -72,7 +73,7 @@ public class Hero extends Entity
 		}
 		public Object getValueAt(int row, int col)
 		{
-			if(col == 1)
+			if(col == 0)
 			{
 				switch(row)
 				{
@@ -89,11 +90,11 @@ public class Hero extends Entity
 				default: return "error";
 				}
 			}
-			else if(col == 2)
+			else if(col == 1)
 			{
 				switch(row)
 				{
-				case 0: return name; 
+				case 0: return getName(); 
 				case 1:	return getHealth(); 
 				case 2:	return getDefence(); 
 				case 3:	return getAtkDmg(); 
@@ -106,7 +107,7 @@ public class Hero extends Entity
 				default: return 0;
 				}
 			}
-			else return "";	
+			else return "error";	
 		}
 
  }

@@ -13,16 +13,16 @@ public class StatusWindow extends JFrame
 	StatusWindow(Game g)
 	{
 		game = g;
+		enemies = game.getEnemies();
+		heroes = game.getHeroes();
 		setup();
 		build();
 		pack();
-		enemies = game.getEnemies();
-		heroes = game.getHeroes();
 	}
 
 	private void setup()
 	{
-		setLocation(600,650);
+		setLocation(0,0);
         setVisible(true);
 	}
 

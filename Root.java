@@ -4,7 +4,7 @@ public class Root
 {
 	private Game game;
 	private GameWindow gameWindow;
-	//private StatusWindow statusWindow;
+	private StatusWindow statusWindow;
 
 	public static void main(String[] args) 
 	{
@@ -15,7 +15,7 @@ public class Root
 	{
 		game = new Game();
 		gameWindow = new GameWindow(game);
-		//statusWindow = new StatusWindow(game);
+		statusWindow = new StatusWindow(game);
 		start();
 	}
 
