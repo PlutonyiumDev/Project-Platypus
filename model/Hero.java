@@ -72,36 +72,38 @@ public class Hero extends Entity
 		}
 		public Object getValueAt(int row, int col)
 		{
-			if(col == 0)
+			if(col == 1)
 			{
 				switch(row)
 				{
-				case 0: return "name"; break;
-				case 1:	return "health"; break;
-				case 2:	return "defence"; break;
-				case 3:	return "atkDmg"; break;
-				case 4: return "atkSpd"; break;
-				case 5:	return "dodge"; break;
-				case 6: return "crit"; break;
-				case 7: return "healthRegen"; break;
-				case 8:	return "Stamina"; break;
-				case 9: return "staminaRegen"; break;
+				case 0: return "name";
+				case 1:	return "health"; 
+				case 2:	return "defence";
+				case 3:	return "atkDmg"; 
+				case 4: return "atkSpd"; 
+				case 5:	return "dodge"; 
+				case 6: return "crit"; 
+				case 7: return "healthRegen"; 
+				case 8:	return "Stamina";
+				case 9: return "staminaRegen"; 
+				default: return "error";
 				}
 			}
-			else if(col == 1)
+			else if(col == 2)
 			{
 				switch(row)
 				{
-				case 0: return name; break;
-				case 1:	return this.getHealth(); break;
-				case 2:	return this.getDefence(); break;
-				case 3:	return this.getAtkDmg(); break;
-				case 4: return this.getAtkSpd(); break;
-				case 5:	return this.getDodge(); break;
-				case 6: return this.getCrit(); break;
-				case 7: return healthRegen; break;
-				case 8:	return stamina; break;
-				case 9: return staminaRegen; break;
+				case 0: return name; 
+				case 1:	return getHealth(); 
+				case 2:	return getDefence(); 
+				case 3:	return getAtkDmg(); 
+				case 4: return getAtkSpd(); 
+				case 5:	return getDodge(); 
+				case 6: return getCrit();
+				case 7: return healthRegen; 
+				case 8:	return stamina; 
+				case 9: return staminaRegen; 
+				default: return 0;
 				}
 			}
 			else return "";	
