@@ -45,6 +45,7 @@ public class StatusWindow extends JFrame
 				if(hero1 == null)
 				{
 					hero1 = h.heroTable();
+					System.out.println("One");
 				}
 				else if(hero2 == null)
 				{
