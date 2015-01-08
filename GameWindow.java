@@ -42,13 +42,14 @@ public class GameWindow extends JFrame
 		add(mainPanel);
 	}
 
-	private class GamePanel extends JPanel
+	private class GamePanel extends JPanel implements View
 	{
 		private JTextField timer = new JTextField(10);
 
 		GamePanel()
 		{
 			setVisible(true);
+			game.attach(this);
 		}
 
 		
@@ -93,14 +94,13 @@ public class GameWindow extends JFrame
 	        for (int y = BOX_HEIGHT; y < GRID_HEIGHT * BOX_HEIGHT; y+=BOX_HEIGHT)
 	        {
 	            g.drawLine(0,y,GRID_WIDTH * BOX_WIDTH, y);
-        }
+       		 }
 
-    	
-	}
+		}
+		public void update()
+    	{
+    		repaint();
+    	}
 
-}
-	public void update()
-	{
-		mainPanel.repaint();
 	}
 }
