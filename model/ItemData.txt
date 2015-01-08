@@ -1,0 +1,6 @@
+sword
+2
+attack 10;
+shield
+3
+defence 10;
