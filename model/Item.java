@@ -1,4 +1,4 @@
-package model;
+//package model;
 
 import java.util.*;
 
@@ -28,5 +28,11 @@ public class Item
 				return stats.get(key);
 		}
 		return 0;
+	}
+
+	public void outputData()
+	{
+		System.out.println("" + itemID + " " + name + " " + weight);
+		System.out.println(stats.toString());
 	}
 }

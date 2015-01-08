@@ -1,6 +1,7 @@
 sword
 2
-attack 10;
+attack 10
+atkspd 3;
 shield
 3
 defence 10;
