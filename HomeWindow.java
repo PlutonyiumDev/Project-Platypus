@@ -6,14 +6,17 @@ import javax.swing.table.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import java.awt.event.*;
+import java.text.*;
 
 public class HomeWindow extends JFrame
 {
 	private Game game;
 	private LinkedList<Hero> heroes = new LinkedList<Hero>();
+	private JPanel homePanel;
 
 	HomeWindow(Game game)
 	{
+
 		heroes = game.getHeroes();
 		this.game = game;
 		setup();
@@ -29,69 +32,79 @@ public class HomeWindow extends JFrame
 
 	public void build()
 	{
-		add(new HomePanel());
+		homePanel = new HomePanel();
+		add(homePanel);
 	}
 
-
-	private class HomePanel extends JPanel
+	public class HomePanel extends JPanel implements View
 	{
 		LinkedList<Box> boxes = new LinkedList<Box>();
 		JButton start = new JButton("Start");
 		JButton surrender = new JButton("Surrender");
+		JLabel gold = new JLabel("Gold: "+game.getGold());
 
 
-	HomePanel()
-	{
-		setup();
-		build();
-	}
-
-	public void setup()
-	{
-		setLayout(new FlowLayout());
-		setVisible(true);
-	}
-
-	public void build()
-	{
-		Listener listener = new Listener();
-		start.addActionListener(listener);
-		surrender.addActionListener(listener);
-		for(int i = 0; i < heroes.size(); i++)
+		HomePanel()
 		{
-			boxes.add( Box.createVerticalBox());
-			boxes.get(i).add(new JLabel(heroes.get(i).getName()));
+			game.attach(this);
+			setup();
+			build();
 		}
 
-		Box portrait = Box.createVerticalBox();
-		for(Box box: boxes)
+		public void setup()
 		{
-			portrait.add(box);
+			setLayout(new FlowLayout());
+			setVisible(true);
 		}
 
-		Box status = Box.createHorizontalBox();
-		status.add(start);
-		status.add(surrender);
-		portrait.add(status);
-		add(portrait);
-	}
+		public void build()
+		{
+			gold.setText("Gold: "+game.getGold());
+			Listener listener = new Listener();
+			start.addActionListener(listener);
+			surrender.addActionListener(listener);
+			for(int i = 0; i < heroes.size(); i++)
+			{
+				boxes.add( Box.createVerticalBox());
+				boxes.get(i).add(new JLabel(heroes.get(i).getName()));
+			}
 
-	 private class Listener implements ActionListener
-        {
-            public void actionPerformed(ActionEvent e)
-            {
-            	if(e.getActionCommand().equals("Start"))
-            	{
-            		game.changeState(true);
-            		System.out.println("You have started the dungeon");
-            	}
-            	else if(e.getActionCommand().equals("Surrender"))
-            	{
-            		game.changeState(false);
-            		System.out.println("You have surrendered");
-            	}
-            }
-        }    
+			Box portrait = Box.createVerticalBox();
+			for(Box box: boxes)
+			{
+				portrait.add(box);
+			}
+
+			Box status = Box.createHorizontalBox();
+			status.add(start);
+			status.add(surrender);
+			portrait.add(status);
+			portrait.add(gold);
+			add(portrait);
+		} 
+
+		public void update()
+		{
+			gold.setText("Gold: "+game.getGold());
+		}
+
+		 private class Listener implements ActionListener
+	        {
+	            public void actionPerformed(ActionEvent e)
+	            {
+	            	if(e.getActionCommand().equals("Start"))
+	            	{
+	            		game.changeState(true);
+	            		System.out.println("You have started the dungeon");
+	            	}
+	            	else if(e.getActionCommand().equals("Surrender"))
+	            	{
+	            		game.changeState(false);
+	            		System.out.println("You have surrendered");
+	            	}
+	            }
+	        }    
+
 
 	}
 }

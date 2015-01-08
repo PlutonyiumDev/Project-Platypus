@@ -2,13 +2,14 @@ package model;
 
 import java.util.*;
 
-public class Game
+public class Game extends Viewable
 {
 	private Hero o;
 	private int gameTimer;
 	private LinkedList<Hero> heroes = new LinkedList<Hero>();
 	private LinkedList<Entity> enemies = new LinkedList<Entity>();
 	private boolean start;
+	private int gold = 0;
 
 	public Game()
 	{
@@ -33,13 +34,15 @@ public class Game
 	public void tick()
 	{
 		if(start)
-			{
+		{
 			gameTimer++;
 			System.out.println("Time is "+ gameTimer +"ms");
 			for(Entity e: enemies)
 			{
 				e.step();
 			}
+			gold++;
+			update();
 		}
 	}
 
@@ -61,6 +64,11 @@ public class Game
 	public int getTime()
 	{
 		return gameTimer;
+	}
+
+	public int getGold()
+	{
+		return gold;
 	}
 
 }

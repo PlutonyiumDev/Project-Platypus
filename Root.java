@@ -28,7 +28,6 @@ public class Root
 		{
 			try{
 			game.tick();
-			gameWindow.update();
 			Thread.sleep(1000);
 		}
 		catch(InterruptedException e){
@@ -36,6 +35,8 @@ public class Root
 		}
 		}
 	}
+
+
 
 	public boolean winCheck()
 	{
