@@ -36,7 +36,6 @@ public class Entity extends Point
 	{
 		this(e.health, e.defence, e.atkDmg, e.atkSpd, e.dodge, e.crit);
 	}
-
 	public int getHealth()
 	{
 		return health;
@@ -70,6 +69,34 @@ public class Entity extends Point
 		return crit;
 	}
 
+	public void setHealth(int health)
+	{
+		this.health = health;
+	}
+
+	public void setDefence(int defence)
+	{
+		this.defence = defence;
+	}
+	public void setAtkDmg(int atkDmg)
+	{
+		this.atkDmg = atkDmg;
+	}
+	public void setAtkSpd(int atkSpd)
+	{
+		this.atkSpd = atkSpd;
+	}
+
+	public void setDodge(int dodge)
+	{
+		this.dodge = dodge;
+	}
+
+	public void setCrit(int crit)
+	{
+		this.crit = crit;
+	}
+
 	public void setCoordinates(int x, int y)
 	{
 		setLocation(x, y);
@@ -83,30 +110,13 @@ public class Entity extends Point
        		g.setColor(Color.BLACK);
        		
 	}
-/*
-	public void attack(Entity e)
+
+
+	
+	public boolean checkRange(double x, double y)
 	{
-		Random r = new Random();
-		if (e.dodge < r.nextInt(100))
-		{
-			int setAtk = atkDmg;
-			if (crit > r.nextInt(100))
-				setAtk *= 2;
-			e.health -= setAtk - e.defence * 0.125;
-			System.out.println("Attacked for "+ atkDmg);
-			system.out.println("Health Remaining: "+e.health);
-		}
-	}
-	*/
-
-
-
-	public boolean checkRange(Entity e)
-	{
-		int rangeX = (int)this.getX() -  (int)e.getX();
-		int rangeY = (int)this.getY() - (int)e.getY();
+		int rangeX = (int)this.getX() -  (int)x;
+		int rangeY = (int)this.getY() - (int)y;
 		return (Math.abs(rangeX) + Math.abs(rangeY)) <= range;
 	}
-	
-	
 }

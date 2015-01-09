@@ -2,7 +2,7 @@ package model;
 
 import java.awt.*;
 import java.util.*;
-
+import java.util.Random;
 public class Enemy extends Entity
 {
 	private static final double DROP_CHANCE = 0.01;
@@ -16,10 +16,8 @@ public class Enemy extends Entity
 
 	public boolean action(Hero h)
 	{
-		
-			if(checkRange(h))
-			{
-				System.out.println("Attacking2");
+		System.out.println("Attacking2");
+			if(checkRange(h.getX(), h.getY()))
 				attackHero(h);
 				return true;
 			}
@@ -47,5 +45,4 @@ public class Enemy extends Entity
 			System.out.println("Health Remaining: "+h.getHealth());
 		}
 	}
-
 }
