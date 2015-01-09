@@ -16,11 +16,17 @@ public class Enemy extends Entity
 
 	public boolean action(Hero h)
 	{
+<<<<<<< HEAD
 		System.out.println("Attacking2");
 			if(checkRange(h.getX(), h.getY()))
+=======
+			/*if(checkRange(h.getX(), h.getY()))
+			{
+				//System.out.println("Attacking2");
+>>>>>>> parent of b264501... Attack bug fixed (somehow)
 				attackHero(h);
 				return true;
-			}
+			}*/
 			return false;
 			
 	}
