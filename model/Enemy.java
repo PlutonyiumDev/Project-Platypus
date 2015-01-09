@@ -20,7 +20,6 @@ public class Enemy extends Entity
 	{
 		if(checkRange(h.getX(), h.getY()))
 		{
-			System.out.println("Attacking2");
 			attackHero(h);
 			return true;
 		}
@@ -36,7 +35,7 @@ public class Enemy extends Entity
 
 	public void attackHero(Hero h)
 	{
-		
+	  	System.out.println(h.getName() + "Health: " + h.getHealth());
 		Random r = new Random();
 		if (h.getDodge() < r.nextInt(100))
 		{
