@@ -40,14 +40,19 @@ public class Game extends Viewable
 			for(Enemy e: enemies)
 			{
 				boolean attacked = false;
+				
 				for(Hero h: heroes)
 				{
+					
 					if(e.action(h))
 					{
 						System.out.println("Attacking");
-						attacked = true;
+						//attacked = true;
 					}
+					
 				}
+				
+
 				if(!attacked)
 				{
 					e.step();

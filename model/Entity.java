@@ -41,6 +41,11 @@ public class Entity extends Point
 	{
 		return health;
 	}
+	
+	public void setHealth(int i)
+	{
+		health = i;
+	}
 
 	public int getDefence()
 	{
@@ -100,7 +105,6 @@ public class Entity extends Point
 	{
 		int rangeX = (int)this.getX() -  (int)e.getX();
 		int rangeY = (int)this.getY() - (int)e.getY();
-		System.out.println("Detected entity");
 		return (Math.abs(rangeX) + Math.abs(rangeY)) <= range;
 	}
 	
