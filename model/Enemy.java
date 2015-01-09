@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Random;
+
 public class Enemy extends Entity
 {
 	private static final double DROP_CHANCE = 0.01;
@@ -13,12 +15,12 @@ public class Enemy extends Entity
 
 	public boolean action(Hero h)
 	{
-			if(checkRange(h))
+			/*if(checkRange(h.getX(), h.getY()))
 			{
-				System.out.println("Attacking2");
+				//System.out.println("Attacking2");
 				attackHero(h);
-				return false;
-			}
+				return true;
+			}*/
 			return false;
 	}
 
@@ -34,13 +36,13 @@ public class Enemy extends Entity
 		Random r = new Random();
 		if (h.getDodge() < r.nextInt(100))
 		{
-			int setAtk = atkDmg;
-			if (crit > r.nextInt(100))
+			int setAtk = getAtkDmg();
+			if (getCrit() > r.nextInt(100))
 				setAtk *= 2;
-			h.getHealth() -= setAtk - h.getDefence * 0.125;
-			System.out.println("Attacked for "+ atkDmg);
-			System.out.println("Health Remaining: "+h.getHealth);
+			int heroHealth = h.getHealth();
+			h.setHealth((int)(heroHealth - setAtk - h.getDefence() * 0.125));
+			System.out.println("Attacked for "+ setAtk);
+			System.out.println("Health Remaining: "+h.getHealth());
 		}
 	}
-
 }
