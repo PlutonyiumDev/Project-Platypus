@@ -7,7 +7,7 @@ public class Game extends Viewable
 	private Hero o;
 	private int gameTimer;
 	private LinkedList<Hero> heroes = new LinkedList<Hero>();
-	private LinkedList<Entity> enemies = new LinkedList<Entity>();
+	private LinkedList<Enemy> enemies = new LinkedList<Enemy>();
 	private boolean start;
 	private int gold = 0;
 
@@ -18,16 +18,16 @@ public class Game extends Viewable
 		heroes.add(new Hero(10, 5, 4, 3, 0, 0, "Sam", 3, 20, 3));
 		heroes.add(new Hero(10, 7, 4, 3, 0, 0, "Nick", 3, 20, 3));
 		heroes.add(new Hero(10, 5, 4, 3, 0, 0, "Chris", 3, 20, 3));
-		enemies.add(new Entity(1,1,1,1,1,1));
+		enemies.add(new Enemy(new Entity(1,1,1,1,1,1),1));
 
 		for (int i = 0; i < heroes.size(); i++)
 		{
 			heroes.get(i).setCoordinates(i, 3);
 		}
 
-		for(Entity e: enemies)
+		for(Enemy e: enemies)
 		{
-			e.setCoordinates(19,3);
+			e.setCoordinates(6,3);
 		}
 	}
 
@@ -37,9 +37,21 @@ public class Game extends Viewable
 		{
 			gameTimer++;
 			System.out.println("Time is "+ gameTimer +"ms");
-			for(Entity e: enemies)
+			for(Enemy e: enemies)
 			{
-				e.step();
+				boolean attacked = false;
+				for(Hero h: heroes)
+				{
+					if(e.action(h))
+					{
+						System.out.println("Attacking");
+						attacked = true;
+					}
+				}
+				if(!attacked)
+				{
+					e.step();
+				}
 			}
 			gold++;
 			update();
@@ -56,7 +68,7 @@ public class Game extends Viewable
 	return heroes;
 	}
 
-	public LinkedList<Entity> getEnemies()
+	public LinkedList<Enemy> getEnemies()
 	{
 		return enemies;
 	}

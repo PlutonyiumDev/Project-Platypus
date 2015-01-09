@@ -78,6 +78,7 @@ public class Entity extends Point
        		g.setColor(Color.BLACK);
        		
 	}
+/*
 	public void attack(Entity e)
 	{
 		Random r = new Random();
@@ -87,21 +88,21 @@ public class Entity extends Point
 			if (crit > r.nextInt(100))
 				setAtk *= 2;
 			e.health -= setAtk - e.defence * 0.125;
+			System.out.println("Attacked for "+ atkDmg);
+			system.out.println("Health Remaining: "+e.health);
 		}
 	}
+	*/
 
-	public void step()
-	{
-		setLocation(x-1, y);
-		System.out.println("My Location is ("+x+","+y+")");
-	}
+
 
 	public boolean checkRange(Entity e)
 	{
 		int rangeX = (int)this.getX() -  (int)e.getX();
 		int rangeY = (int)this.getY() - (int)e.getY();
-
+		System.out.println("Detected entity");
 		return (Math.abs(rangeX) + Math.abs(rangeY)) <= range;
 	}
+	
 	
 }
