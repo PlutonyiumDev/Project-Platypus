@@ -15,12 +15,13 @@ public class Enemy extends Entity
 
 	public boolean action(Hero h)
 	{
-			/*if(checkRange(h.getX(), h.getY()))
+		System.out.println("Attacking2");
+			if(checkRange(h.getX(), h.getY()))
 			{
 				//System.out.println("Attacking2");
 				attackHero(h);
 				return true;
-			}*/
+			}
 			return false;
 	}
 
