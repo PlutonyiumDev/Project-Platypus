@@ -36,8 +36,6 @@ public class Root
 		}
 	}
 
-
-
 	public boolean winCheck()
 	{
 		return true;

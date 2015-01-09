@@ -9,7 +9,7 @@ public class StatusWindow extends JFrame
 {
 	private Game game;
 	private LinkedList<Hero> heroes = new LinkedList<Hero>();
-	private LinkedList<Entity> enemies = new LinkedList<Entity>();
+	private LinkedList<Enemy> enemies = new LinkedList<Enemy>();
 	StatusWindow(Game g)
 	{
 		game = g;
@@ -32,11 +32,12 @@ public class StatusWindow extends JFrame
 	}
 
 
-	private class StatusPanel extends JPanel
+	private class StatusPanel extends JPanel implements View
 	{
 		LinkedList<JTable> heroTables = new LinkedList<JTable>();
 		StatusPanel()
 		{
+			game.attach(this);
 			setVisible(true);
 			for(Hero h : heroes)
 			{
@@ -56,6 +57,17 @@ public class StatusWindow extends JFrame
 		{
 			for (JTable table : heroTables)
 				add(table);
+		}
+
+		public void update()
+		{
+			heroTables = new LinkedList<JTable>();
+			for(Hero h : heroes)
+			{
+				heroTables.add(h.heroTable());
+			}
+			setup();
+			build();
 		}
 	}
 }

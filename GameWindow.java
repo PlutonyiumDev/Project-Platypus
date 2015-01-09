@@ -60,7 +60,7 @@ public class GameWindow extends JFrame
 			g.setColor(Color.BLUE);
 			drawGrid(g);
 			LinkedList<Hero> heroes = game.getHeroes();
-			LinkedList<Entity> enemies = game.getEnemies();
+			LinkedList<Enemy> enemies = game.getEnemies();
 			for(int i = 0; i < heroes.size(); i++)
 			{
 				int battled = 0;

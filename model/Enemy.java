@@ -1,8 +1,10 @@
 package model;
 
+
 import java.awt.*;
 import java.util.*;
 import java.util.Random;
+
 public class Enemy extends Entity
 {
 	private static final double DROP_CHANCE = 0.01;
@@ -16,18 +18,13 @@ public class Enemy extends Entity
 
 	public boolean action(Hero h)
 	{
-<<<<<<< HEAD
-		System.out.println("Attacking2");
-			if(checkRange(h.getX(), h.getY()))
-=======
-			/*if(checkRange(h.getX(), h.getY()))
-			{
-				//System.out.println("Attacking2");
->>>>>>> parent of b264501... Attack bug fixed (somehow)
-				attackHero(h);
-				return true;
-			}*/
-			return false;
+		if(checkRange(h.getX(), h.getY()))
+		{
+			System.out.println("Attacking2");
+			attackHero(h);
+			return true;
+		}
+		return false;
 			
 	}
 
@@ -44,11 +41,12 @@ public class Enemy extends Entity
 		if (h.getDodge() < r.nextInt(100))
 		{
 			int setAtk = getAtkDmg();
-			if (h.getCrit() > r.nextInt(100))
+			if (getCrit() > r.nextInt(100))
 				setAtk *= 2;
 			h.setHealth(setAtk - h.getDefence());
-			System.out.println("Attacked for "+ h.getAtkDmg());
+			System.out.println("Attacked for "+ getAtkDmg());
 			System.out.println("Health Remaining: "+h.getHealth());
 		}
 	}
+
 }

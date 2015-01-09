@@ -43,11 +43,10 @@ public class Game extends Viewable
 				
 				for(Hero h: heroes)
 				{
-					
 					if(e.action(h))
 					{
 						System.out.println("Attacking");
-						//attacked = true;
+						attacked = true;
 					}
 					
 				}
