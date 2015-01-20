@@ -12,7 +12,6 @@ public class Hero extends Entity
 	private int stamina;
 	private int staminaRegen;
 	private JTable data;
-
 	private LinkedList<Item> inventory = new LinkedList<Item>();
 
 	public Hero(Entity e, String name, int healthRegen, int stamina, int staminaRegen)

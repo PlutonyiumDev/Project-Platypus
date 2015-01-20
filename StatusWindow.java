@@ -61,13 +61,7 @@ public class StatusWindow extends JFrame
 
 		public void update()
 		{
-			heroTables = new LinkedList<JTable>();
-			for(Hero h : heroes)
-			{
-				heroTables.add(h.heroTable());
-			}
-			setup();
-			build();
+			repaint();
 		}
 	}
 }

@@ -36,7 +36,7 @@ public class Game extends Viewable
 		if(start)
 		{
 			gameTimer++;
-			System.out.println("Time is "+ gameTimer +"ms");
+			//System.out.println("Time is "+ gameTimer +"ms");
 			for(Enemy e: enemies)
 			{
 				boolean attacked = false;
@@ -45,8 +45,12 @@ public class Game extends Viewable
 				{
 					if(e.action(h))
 					{
-						System.out.println("Attacking");
+						//System.out.println("Attacking");
 						attacked = true;
+					}
+					if(h.getHealth() == 0)
+					{
+						heroes.remove(h);
 					}
 					
 				}

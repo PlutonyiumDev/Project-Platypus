@@ -30,22 +30,41 @@ public class Enemy extends Entity
 	public void step()
 	{
 		setLocation(x-1, y);
-		System.out.println("My Location is ("+x+","+y+")");
+		//System.out.println("My Location is ("+x+","+y+")");
 	}
 
 	public void attackHero(Hero h)
 	{
-	  	System.out.println(h.getName() + "Health: " + h.getHealth());
 		Random r = new Random();
 		if (h.getDodge() < r.nextInt(100))
 		{
-			int setAtk = getAtkDmg();
-			if (getCrit() > r.nextInt(100))
-				setAtk *= 2;
-			h.setHealth(setAtk - h.getDefence());
-			System.out.println("Attacked for "+ getAtkDmg());
-			System.out.println("Health Remaining: "+h.getHealth());
+			//int setAtk = getAtkDmg();
+			//if (getCrit() > r.nextInt(100))
+				//setAtk *= 2;
+			h.takeDamage(dealDamage(h.getDefence()));
+			//System.out.println("Health Remaining: "+h.getHealth());
 		}
+		else
+		{
+			System.out.println("Dodged");
+		}
+	}
+
+//enemies deal minimum 1 damage
+
+	public int dealDamage(int a)
+	{
+		int dmg = getAtkDmg() - a;
+		if(dmg > 0)
+		{
+			System.out.println("Attacking for "+ dmg);
+			return dmg;
+		}
+		else 
+			{
+				System.out.println("Attacking for default 1");
+				return 1;
+			}
 	}
 
 }

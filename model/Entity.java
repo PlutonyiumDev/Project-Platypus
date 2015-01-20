@@ -91,6 +91,11 @@ public class Entity extends Point
 		this.health = health;
 	}
 
+	public void takeDamage(int dmg)
+	{
+		this.health = health - dmg;
+	}
+
 	public void setDefence(int defence)
 	{
 		this.defence = defence;
