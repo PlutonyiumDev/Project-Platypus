@@ -18,7 +18,6 @@ public class Root
 		gameWindow = new GameWindow(game);
 		statusWindow = new StatusWindow(game);
 		homeWindow = new HomeWindow(game);
-
 		start();
 	}
 
@@ -28,7 +27,7 @@ public class Root
 		{
 			try{
 			game.tick();
-			Thread.sleep(1000);
+			Thread.sleep(100);
 		}
 		catch(InterruptedException e){
 			System.out.println("Interrupted");

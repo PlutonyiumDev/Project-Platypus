@@ -16,9 +16,9 @@ public class Game extends Viewable
 		start = false;
 		gameTimer = 0;
 		heroes.add(new Hero(10, 5, 4, 3, 0, 0, "Sam", 3, 20, 3));
-		heroes.add(new Hero(10, 7, 4, 3, 0, 0, "Nick", 3, 20, 3));
-		heroes.add(new Hero(10, 5, 4, 3, 0, 0, "Chris", 3, 20, 3));
-		enemies.add(new Enemy(new Entity(1,1,1,1,1,1),1));
+		heroes.add(new Hero(10, 7, 4, 3, 50, 0, "Nick", 3, 20, 3));
+		heroes.add(new Hero(10, 5, 4, 10, 0, 0, "Chris", 3, 20, 3));
+		enemies.add(new Enemy(new Entity(20,1,1,10,1,1),1,10));
 
 		for (int i = 0; i < heroes.size(); i++)
 		{
@@ -39,31 +39,28 @@ public class Game extends Viewable
 			//System.out.println("Time is "+ gameTimer +"ms");
 			for(Enemy e: enemies)
 			{
-				boolean attacked = false;
-				
-				for(Hero h: heroes)
+				e.action(heroes, gameTimer);
+				for(Hero h : heroes)
 				{
-					if(e.action(h))
-					{
-						//System.out.println("Attacking");
-						attacked = true;
-					}
-					if(h.getHealth() == 0)
-					{
-						heroes.remove(h);
-					}
-					
-				}
-				
-
-				if(!attacked)
-				{
-					e.step();
+					if(h.getHealth() <= 0)
+					heroes.remove(h);
 				}
 			}
+
+			for(Hero h: heroes)
+			{
+				h.action(enemies, gameTimer);
+				for(Enemy e : enemies)
+				{
+					if(e.getHealth() <= 0)
+					enemies.remove(e);
+				}
+			}
+
 			gold++;
 			update();
-		}
+			
+		}	
 	}
 
 	public void changeState(boolean b)

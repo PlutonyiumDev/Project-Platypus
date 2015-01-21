@@ -9,22 +9,43 @@ public class Enemy extends Entity
 {
 	private static final double DROP_CHANCE = 0.01;
 	private int level;
+	private int moveSpeed;
+	private int lastAction;
 
-	public Enemy(Entity e, int level)
+	public Enemy(Entity e, int level, int moveSpeed)
 	{
 		super(e);
 		this.level = level;
+		this.moveSpeed = moveSpeed;
+		lastAction = 0;
 	}
 
-	public boolean action(Hero h)
+	public void action(LinkedList<Hero> h, int time)
 	{
-		if(checkRange(h.getX(), h.getY()))
+		boolean movable = true;
+		for(Hero hero: h)
 		{
-			attackHero(h);
-			return true;
+			if(lastAction != time && checkRange(hero.getX(), hero.getY()) && time % getAtkSpd() == 0)
+			{
+				attackHero(hero);
+				lastAction = time;
+
+			}
 		}
-		return false;
-			
+
+		for(Hero hero: h)
+		{
+			if(checkRange(hero.getX(), hero.getY()))
+			movable = false;
+		}
+			if(time%moveSpeed == 0 && movable)
+				step();
+
+	}
+
+	public int getMoveSpeed()
+	{
+		return moveSpeed;
 	}
 
 	public void step()

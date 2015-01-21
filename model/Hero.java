@@ -4,6 +4,7 @@ import java.util.*;
 import javax.swing.table.*;
 import java.awt.*;
 import javax.swing.*;
+import java.util.Random;
 
 public class Hero extends Entity
 {
@@ -26,6 +27,52 @@ public class Hero extends Entity
 	public Hero(int health, int defence, int atkDmg, int atkSpd, int dodge, int crit, String name, int healthRegen, int stamina, int staminaRegen)
 	{
 		this(new Entity(health, defence, atkDmg, atkSpd, dodge, crit), name, healthRegen, stamina, staminaRegen);
+	}
+
+	public void attack(Enemy e)
+	{
+		Random r = new Random();
+		if (e.getDodge() < r.nextInt(100))
+		{
+			//int setAtk = getAtkDmg();
+			//if (getCrit() > r.nextInt(100))
+				//setAtk *= 2;
+			e.takeDamage(dealDamage(e.getDefence()));
+			//System.out.println("Health Remaining: "+h.getHealth());
+		}
+		else
+		{
+			System.out.println("Dodged");
+		}
+	}
+
+	public void action(LinkedList<Enemy> e, int time)
+	{
+		boolean attacked = false;
+		for(Enemy enemy: e)
+		{
+			if(checkRange(enemy.getX(), enemy.getY()))
+			{
+				if(!attacked && time % getAtkSpd() == 0)
+					attack(enemy);
+			
+		}
+	}
+}
+
+	public int dealDamage(int a)
+	{
+		int dmg = getAtkDmg() - a;
+		if(dmg > 0)
+		{
+			System.out.println(getName() + " Attacking for "+ dmg);
+			return dmg;
+		}
+		else 
+			{
+				System.out.println("Attacking for default 1");
+				return 1;
+			}
 	}
 
 	public String getName()

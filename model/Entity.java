@@ -75,8 +75,8 @@ public class Entity extends Point
 			g.setColor(Color.RED);
 			g.drawOval(x * 30, y * 30, 30, 30);
         	g.fillOval(x * 30, y * 30, 30, 30);
-       		g.setColor(Color.BLACK);
-       		
+        	g.setColor(Color.BLACK);
+        	g.drawString(""+health,x * 30,y *30);
 	}
 
 	public boolean checkRange(double x, double y)
